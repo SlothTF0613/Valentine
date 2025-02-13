@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? ❤️</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #ffe6f2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 350px;
+        }
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        h1 {
+            color: #ff4d79;
+            font-size: 22px;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        button {
+            font-size: 18px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin: 10px auto;
+            width: 80%;
+        }
+        #yesBtn {
+            background-color: #ff4d79;
+            color: white;
+        }
+        #noBtn {
+            background-color: #ddd;
+            color: black;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>Will you be my Valentine? 💖</h1>
+        <p><strong>Date:</strong> February 14, 2025</p>
+        <p><strong>Place:</strong> [Kahit saan, As long as Kasama kita] 📍</p>
+        <button id="yesBtn" onclick="yesClicked()">Yes! 🥰</button>
+        <button id="noBtn" onmouseover="moveNoButton()">No 😢</button>
+    </div>
+
+    <script>
+        function yesClicked() {
+            document.body.innerHTML = "<h1 style='color:#ff4d79;'>YAY! You said YES! 😍💖</h1><p style='font-size:20px;'>See you on Feb 14 at [Your Chosen Location] for the best date ever! 💘</p>";
+        }
+
+        function moveNoButton() {
+            let noBtn = document.getElementById("noBtn");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.position = "absolute";
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+    </script>
+
+</body>
+</html>
