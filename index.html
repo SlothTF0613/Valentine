@@ -22,14 +22,18 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             width: 90%;
             max-width: 350px;
+            position: relative;
         }
-        .heart {
-            font-size: 50px;
-            animation: heartbeat 1s infinite;
+        .cat {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            animation: bounce 1s infinite alternate;
         }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
         }
         h1 {
             color: #ff4d79;
@@ -53,37 +57,42 @@
         #yesBtn {
             background-color: #ff4d79;
             color: white;
+            transition: transform 0.3s ease-in-out;
         }
         #noBtn {
             background-color: #ddd;
             color: black;
-            position: absolute;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="heart">❤️</div>
-        <h1>Will you be my Valentine? 💖</h1>
+        <img src="https://i.imgur.com/N7pXwUb.png" alt="Begging Cat" class="cat">
+        <h1>Will you be my Valentine? 🥺💖</h1>
         <p><strong>Date:</strong> February 14, 2025</p>
-        <p><strong>Place:</strong> [Kahit saan, As long as Kasama kita] 📍</p>
+        <p><strong>Place:</strong> Kahit saan, As long as Kasama ka😋😚 📍</p>
         <button id="yesBtn" onclick="yesClicked()">Yes! 🥰</button>
-        <button id="noBtn" onmouseover="moveNoButton()">No 😢</button>
+        <button id="noBtn" onclick="noClicked()">No 😢</button>
     </div>
 
     <script>
+        let yesBtn = document.getElementById("yesBtn");
+        let noBtn = document.getElementById("noBtn");
+        let yesSize = 18;
+
         function yesClicked() {
-            document.body.innerHTML = "<h1 style='color:#ff4d79;'>YAY! You said YES! 😍💖</h1><p style='font-size:20px;'>See you on Feb 14 at [Your Chosen Location] for the best date ever! 💘</p>";
+            document.body.innerHTML = "<h1 style='color:#ff4d79;'>Lezgooo!!😍😚</h1><p style='font-size:20px;'>See you on Feb 14 at Sogo! EME 💘</p><img src='https://i.imgur.com/N7pXwUb.png' style='width:200px; display:block; margin:0 auto;'>";
         }
 
-        function moveNoButton() {
-            let noBtn = document.getElementById("noBtn");
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 50);
-            noBtn.style.position = "absolute";
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
+        function noClicked() {
+            yesSize += 10;
+            yesBtn.style.fontSize = yesSize + "px";
+            yesBtn.style.padding = (12 + (yesSize - 18) / 2) + "px " + (20 + (yesSize - 18)) + "px";
+
+            if (yesSize >= 60) {
+                noBtn.style.display = "none"; // Hide the No button if Yes gets too big
+            }
         }
     </script>
 
